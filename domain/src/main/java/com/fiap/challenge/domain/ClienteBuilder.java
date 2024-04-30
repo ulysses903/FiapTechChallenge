@@ -1,4 +1,4 @@
-package com.fiap.challenge;
+package com.fiap.challenge.domain;
 
 
 public class ClienteBuilder {

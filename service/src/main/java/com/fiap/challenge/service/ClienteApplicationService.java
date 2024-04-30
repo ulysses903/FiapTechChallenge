@@ -1,12 +1,14 @@
-package com.fiap.challenge;
+package com.fiap.challenge.service;
 
+import com.fiap.challenge.domain.Cliente;
+import com.fiap.challenge.domain.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+@Service
 public class ClienteApplicationService {
     private final ClienteRepository clienteRepository;
 

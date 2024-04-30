@@ -1,6 +1,6 @@
-package com.fiap.challenge;
+package com.fiap.challenge.repository;
 
-import com.fiap.challenge.ClienteRepository;
+import com.fiap.challenge.domain.ClienteRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

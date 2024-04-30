@@ -1,4 +1,4 @@
-package com.fiap.challenge;
+package com.fiap.challenge.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +15,6 @@ public class Cliente {
     private String cpf;
     private String nome;
     private String email;
-
 
     public Cliente(String cpf, String nome, String email) {
         this.cpf = cpf;

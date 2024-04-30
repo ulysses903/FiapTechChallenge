@@ -1,5 +1,7 @@
-package com.fiap.challenge;
+package com.fiap.challenge.domain;
 
+import com.fiap.challenge.domain.Cliente;
+import com.fiap.challenge.domain.ClienteBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

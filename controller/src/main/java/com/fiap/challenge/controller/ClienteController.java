@@ -1,5 +1,8 @@
-package com.fiap.challenge;
+package com.fiap.challenge.controller;
 
+import com.fiap.challenge.service.ClienteApplicationService;
+import com.fiap.challenge.service.ClienteDTO;
+import com.fiap.challenge.domain.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
