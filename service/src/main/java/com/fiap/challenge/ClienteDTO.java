@@ -1,4 +1,4 @@
-package com.fiap.biblioteca;
+package com.fiap.challenge;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.fiap.biblioteca;
+package com.fiap.challenge;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
