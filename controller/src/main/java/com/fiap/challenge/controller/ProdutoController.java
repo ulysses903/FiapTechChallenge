@@ -46,4 +46,24 @@ public class ProdutoController {
         produtoApplicationService.deletarProduto(id);
         return ResponseEntity.ok("Produto excluido com sucesso.");
     }
+
+    @GetMapping("/lanches")
+    public ResponseEntity<List<Produto>> buscarLanches() {
+        return ResponseEntity.ok(produtoApplicationService.listarLanches());
+    }
+
+    @GetMapping("/acompanhamentos")
+    public ResponseEntity<List<Produto>> buscarAcompanhamentos() {
+        return ResponseEntity.ok(produtoApplicationService.listarAcompanhamentos());
+    }
+
+    @GetMapping("/bebidas")
+    public ResponseEntity<List<Produto>> buscarBebidas() {
+        return ResponseEntity.ok(produtoApplicationService.listarBebidas());
+    }
+
+    @GetMapping("/sobremesas")
+    public ResponseEntity<List<Produto>> buscarSobremesas() {
+        return ResponseEntity.ok(produtoApplicationService.listarSobremesas());
+    }
 }

@@ -2,6 +2,7 @@ package com.fiap.challenge.service;
 
 import com.fiap.challenge.domain.Produto;
 import com.fiap.challenge.domain.ProdutoRepository;
+import com.fiap.challenge.domain.TipoDoProduto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +22,8 @@ public class ProdutoApplicationService {
         return produtoRepository.findAll();
     }
 
-    public Produto buscarProduto(Long clienteId) {
-        return produtoRepository.findById(clienteId)
+    public Produto buscarProduto(Long produtoId) {
+        return produtoRepository.findById(produtoId)
                 .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
     }
 
@@ -43,5 +44,21 @@ public class ProdutoApplicationService {
     public void deletarProduto(Long idDoProduto) {
         Produto produto = produtoRepository.findById(idDoProduto).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         produtoRepository.delete(produto);
+    }
+
+    public List<Produto> listarLanches() {
+        return produtoRepository.findAllByTipo(TipoDoProduto.LANCHE);
+    }
+
+    public List<Produto> listarAcompanhamentos() {
+        return produtoRepository.findAllByTipo(TipoDoProduto.ACOMPANHAMENTO);
+    }
+
+    public List<Produto> listarBebidas() {
+        return produtoRepository.findAllByTipo(TipoDoProduto.BEBIDA);
+    }
+
+    public List<Produto> listarSobremesas() {
+        return produtoRepository.findAllByTipo(TipoDoProduto.SOBREMESA);
     }
 }
