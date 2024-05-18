@@ -32,6 +32,6 @@ class ClienteTest {
 
         Cliente cliente = ClienteBuilder.novo().comCpf(cpf).criar();
 
-        assertThat(cliente.getCpf()).isEqualTo(cpf);
+        assertThat(cliente.getCpf().getValor()).isEqualTo(cpf);
     }
 }

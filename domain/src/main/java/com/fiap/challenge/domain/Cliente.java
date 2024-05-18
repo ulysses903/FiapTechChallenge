@@ -1,9 +1,7 @@
 package com.fiap.challenge.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fiap.challenge.domain.cpf.Cpf;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -12,12 +10,13 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String cpf;
     private String nome;
     private String email;
+    @Embedded
+    private Cpf cpf;
 
     public Cliente(String cpf, String nome, String email) {
-        this.cpf = cpf;
+        this.cpf = new Cpf(cpf);
         this.nome = nome;
         this.email = email;
     }
