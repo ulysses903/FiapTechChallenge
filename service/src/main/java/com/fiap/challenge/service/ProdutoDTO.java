@@ -1,5 +1,6 @@
 package com.fiap.challenge.service;
 
+import com.fiap.challenge.domain.TipoDoProduto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +10,10 @@ import java.math.BigDecimal;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LancheDTO {
+public class ProdutoDTO {
 
     private String nome;
     private BigDecimal preco;
+    private TipoDoProduto tipo;
 
 }
