@@ -5,3 +5,6 @@ INSERT INTO produto (nome, preco, tipo) VALUES ('X-Tudo', '15.85', 'LANCHE');
 INSERT INTO produto (nome, preco, tipo) VALUES ('Batata frita', '12.9', 'ACOMPANHAMENTO');
 INSERT INTO produto (nome, preco, tipo) VALUES ('Suco de laranja', '12.9', 'BEBIDA');
 INSERT INTO produto (nome, preco, tipo) VALUES ('Sorvete', '12.9', 'SOBREMESA');
+INSERT INTO pedido (total, status_do_pedido, cliente_id) VALUES ('25.80', 'FINALIZADO', 2);
+INSERT INTO pedido_produtos (pedido_id, produtos_id) VALUES (1, 2);
+INSERT INTO pedido_produtos (pedido_id, produtos_id) VALUES (1, 3);

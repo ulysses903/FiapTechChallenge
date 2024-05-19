@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class ProdutoDTO {
 
+    private Long id;
     private String nome;
     private BigDecimal preco;
     private TipoDoProduto tipo;
