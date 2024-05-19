@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 
 @Entity
@@ -21,15 +20,15 @@ public class Pedido {
     private StatusDoPedido statusDoPedido;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Produto> produtos;
+    private List<Combo> combos;
 
     @ManyToOne
     private Cliente cliente;
 
-    public Pedido(BigDecimal total, List<Produto> produtos, Cliente cliente) {
-        this.total = total.setScale(2, RoundingMode.HALF_EVEN);
+    public Pedido(List<Combo> combos, Cliente cliente) {
+        this.total = combos.stream().map(Combo::getTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
         this.statusDoPedido = StatusDoPedido.RECEBIDO;
-        this.produtos = produtos;
+        this.combos = combos;
         this.cliente = cliente;
     }
 

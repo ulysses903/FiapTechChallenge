@@ -15,6 +15,6 @@ public class PedidoDTO {
 
     private BigDecimal total;
     private StatusDoPedido status;
-    private List<ProdutoDTO> produtos;
+    private List<ComboDTO> combos;
     private ClienteDTO cliente;
 }
