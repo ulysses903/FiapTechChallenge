@@ -12,12 +12,15 @@ public class PedidoApplicationService {
     private final PedidoRepository pedidoRepository;
     private final ProdutoRepository produtoRepository;
     private final ClienteRepository clienteRepository;
+    private final ComboApplicationService comboApplicationService;
 
     @Autowired
-    public PedidoApplicationService(PedidoRepository pedidoRepository, ProdutoRepository produtoRepository, ClienteRepository clienteRepository) {
+    public PedidoApplicationService(PedidoRepository pedidoRepository, ProdutoRepository produtoRepository,
+                                    ClienteRepository clienteRepository, ComboApplicationService comboApplicationService) {
         this.pedidoRepository = pedidoRepository;
         this.produtoRepository = produtoRepository;
         this.clienteRepository = clienteRepository;
+        this.comboApplicationService = comboApplicationService;
     }
 
     public List<Pedido> listarPedidos() {
@@ -31,12 +34,12 @@ public class PedidoApplicationService {
 
     @Transactional
     public void incluirPedido(PedidoDTO pedidoDTO) {
-        List<Produto> produtos = produtoRepository.findAllById(pedidoDTO.getProdutos().stream().map(ProdutoDTO::getId).toList());
-        if (produtos.isEmpty()) {
+        List<Combo> combos = comboApplicationService.adicionarCombos(pedidoDTO.getCombos());
+        if (combos.isEmpty()) {
             throw new RuntimeException("Pelo menos um produto deve ser informado para criar um pedido");
         }
         Cliente cliente = clienteRepository.findById(pedidoDTO.getCliente().getId()).orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
-        Pedido pedido = new Pedido(pedidoDTO.getTotal(), produtos, cliente);
+        Pedido pedido = new Pedido(combos, cliente);
         pedidoRepository.save(pedido);
     }
 

@@ -8,7 +8,9 @@ import java.math.RoundingMode;
 
 @Entity
 @Data
-public class Produto {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+public abstract class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,13 +20,9 @@ public class Produto {
     @Column(precision = 19, scale = 2)
     private BigDecimal preco;
 
-    @Enumerated(EnumType.STRING)
-    private TipoDoProduto tipo;
-
-    public Produto(String nome, BigDecimal preco, TipoDoProduto tipo) {
+    public Produto(String nome, BigDecimal preco) {
         this.nome = nome;
         this.preco = preco.setScale(2, RoundingMode.HALF_EVEN);
-        this.tipo = tipo;
     }
 
     public Produto() {
