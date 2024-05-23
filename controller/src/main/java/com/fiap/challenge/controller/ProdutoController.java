@@ -1,10 +1,10 @@
 package com.fiap.challenge.controller;
 
-import com.fiap.challenge.domain.Acompanhamento;
-import com.fiap.challenge.domain.Bebida;
-import com.fiap.challenge.domain.Lanche;
-import com.fiap.challenge.domain.Sobremesa;
-import com.fiap.challenge.service.*;
+import com.fiap.challenge.domain.pedido.combo.produto.Acompanhamento;
+import com.fiap.challenge.domain.pedido.combo.produto.Bebida;
+import com.fiap.challenge.domain.pedido.combo.produto.Lanche;
+import com.fiap.challenge.domain.pedido.combo.produto.Sobremesa;
+import com.fiap.challenge.service.pedido.combo.produto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,8 +1,8 @@
 package com.fiap.challenge.controller;
 
-import com.fiap.challenge.domain.Pedido;
-import com.fiap.challenge.service.PedidoApplicationService;
-import com.fiap.challenge.service.PedidoDTO;
+import com.fiap.challenge.domain.pedido.Pedido;
+import com.fiap.challenge.service.pedido.PedidoApplicationService;
+import com.fiap.challenge.service.pedido.PedidoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
