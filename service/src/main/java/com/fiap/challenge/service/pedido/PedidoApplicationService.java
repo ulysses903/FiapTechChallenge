@@ -1,9 +1,9 @@
 package com.fiap.challenge.service.pedido;
 
-import com.fiap.challenge.domain.pedido.*;
-import com.fiap.challenge.domain.pedido.combo.Combo;
-import com.fiap.challenge.domain.pedido.combo.produto.ProdutoRepository;
+import com.fiap.challenge.domain.pedido.Pedido;
+import com.fiap.challenge.domain.pedido.PedidoRepository;
 import com.fiap.challenge.domain.pedido.StatusDoPedido;
+import com.fiap.challenge.domain.pedido.combo.Combo;
 import com.fiap.challenge.domain.usuario.Cliente;
 import com.fiap.challenge.domain.usuario.ClienteRepository;
 import com.fiap.challenge.service.pedido.combo.ComboApplicationService;
@@ -16,15 +16,14 @@ import java.util.List;
 @Service
 public class PedidoApplicationService {
     private final PedidoRepository pedidoRepository;
-    private final ProdutoRepository produtoRepository;
     private final ClienteRepository clienteRepository;
     private final ComboApplicationService comboApplicationService;
 
     @Autowired
-    public PedidoApplicationService(PedidoRepository pedidoRepository, ProdutoRepository produtoRepository,
-                                    ClienteRepository clienteRepository, ComboApplicationService comboApplicationService) {
+    public PedidoApplicationService(PedidoRepository pedidoRepository,
+                                    ClienteRepository clienteRepository,
+                                    ComboApplicationService comboApplicationService) {
         this.pedidoRepository = pedidoRepository;
-        this.produtoRepository = produtoRepository;
         this.clienteRepository = clienteRepository;
         this.comboApplicationService = comboApplicationService;
     }
