@@ -1,8 +1,12 @@
 package com.fiap.challenge.controller;
 
 import com.fiap.challenge.domain.pedido.Pedido;
+import com.fiap.challenge.repository.pagamento.PagamentoAPI;
+import com.fiap.challenge.repository.pagamento.PagamentoDTO;
 import com.fiap.challenge.service.pedido.PedidoApplicationService;
 import com.fiap.challenge.service.pedido.PedidoDTO;
+import com.mercadopago.exceptions.MPApiException;
+import com.mercadopago.exceptions.MPException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +17,12 @@ import java.util.List;
 @RequestMapping("/pedidos")
 public class PedidoController {
     private final PedidoApplicationService pedidoApplicationService;
+    private final PagamentoAPI pagamentoAPI;
 
     @Autowired
-    public PedidoController(PedidoApplicationService pedidoApplicationService) {
+    public PedidoController(PedidoApplicationService pedidoApplicationService, PagamentoAPI pagamentoAPI) {
         this.pedidoApplicationService = pedidoApplicationService;
+        this.pagamentoAPI = pagamentoAPI;
     }
 
     @GetMapping
@@ -30,9 +36,14 @@ public class PedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<String> incluirPedido(@RequestBody PedidoDTO pedidoDTO) {
-        pedidoApplicationService.incluirPedido(pedidoDTO);
-        return ResponseEntity.ok("Pedido inserido com sucesso.");
+    public ResponseEntity<PagamentoDTO> incluirPedido(@RequestBody PedidoDTO pedidoDTO) throws MPException, MPApiException {
+        return ResponseEntity.ok(pedidoApplicationService.incluirPedido(pedidoDTO));
+    }
+
+    @PutMapping("/{id}/confirmarPagamento")
+    public ResponseEntity<String> atualizarPedidoParaRecebido(@PathVariable Long id) {
+        pedidoApplicationService.atualizarPedidoParaRecebido(id);
+        return ResponseEntity.ok("Pedido atualizado para em preparação.");
     }
 
     @PutMapping("/{id}/atualizarPedidoParaEmPreparacao")
@@ -53,7 +64,7 @@ public class PedidoController {
         return ResponseEntity.ok("Pedido atualizado para finalizado.");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}/cancelar")
     public ResponseEntity<String> deletarPedido(@PathVariable Long id) {
         pedidoApplicationService.deletarPedido(id);
         return ResponseEntity.ok("Pedido excluido com sucesso.");

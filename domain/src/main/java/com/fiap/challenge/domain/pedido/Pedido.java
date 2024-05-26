@@ -29,7 +29,7 @@ public class Pedido {
 
     public Pedido(List<Combo> combos, Cliente cliente) {
         this.total = combos.stream().map(Combo::getTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
-        this.statusDoPedido = StatusDoPedido.RECEBIDO;
+        this.statusDoPedido = StatusDoPedido.AGUARDANDO_PAGAMENTO;
         this.combos = combos;
         this.cliente = cliente;
     }
