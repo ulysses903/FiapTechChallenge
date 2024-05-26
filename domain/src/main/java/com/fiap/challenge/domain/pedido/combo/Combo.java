@@ -33,11 +33,22 @@ public class Combo {
     private Sobremesa sobremesa;
 
     public Combo(Lanche lanche, Acompanhamento acompanhamento, Bebida bebida, Sobremesa sobremesa) {
-        this.total = somarTotal(lanche, acompanhamento, bebida, sobremesa);
+        validarProdutos(lanche, acompanhamento, bebida, sobremesa);
         this.lanche = lanche;
         this.acompanhamento = acompanhamento;
         this.bebida = bebida;
         this.sobremesa = sobremesa;
+        this.total = somarTotal(lanche, acompanhamento, bebida, sobremesa);
+    }
+
+    public Combo() {
+
+    }
+
+    private void validarProdutos(Lanche lanche, Acompanhamento acompanhamento, Bebida bebida, Sobremesa sobremesa) {
+        if (lanche == null && acompanhamento == null && bebida == null && sobremesa == null) {
+            throw new RuntimeException("Deve ser informado pelo menos um produto no combo.");
+        }
     }
 
     private BigDecimal somarTotal(Lanche lanche, Acompanhamento acompanhamento, Bebida bebida, Sobremesa sobremesa) {
@@ -50,9 +61,5 @@ public class Combo {
             throw new RuntimeException("O combo deve possuir pelo menos um item.");
         }
         return total.setScale(2, RoundingMode.HALF_EVEN);
-    }
-
-    public Combo() {
-
     }
 }

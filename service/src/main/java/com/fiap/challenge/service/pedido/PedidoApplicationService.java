@@ -47,9 +47,6 @@ public class PedidoApplicationService {
     @Transactional
     public PagamentoDTO incluirPedido(PedidoDTO pedidoDTO) throws MPException, MPApiException {
         List<Combo> combos = comboApplicationService.adicionarCombos(pedidoDTO.getCombos());
-        if (combos.isEmpty()) {
-            throw new RuntimeException("Pelo menos um produto deve ser informado para criar um pedido");
-        }
         Cliente cliente = clienteRepository.findById(pedidoDTO.getCliente().getId()).orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
         Pedido pedido = new Pedido(combos, cliente);
         pedidoRepository.save(pedido);

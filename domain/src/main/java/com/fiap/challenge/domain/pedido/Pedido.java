@@ -1,5 +1,6 @@
 package com.fiap.challenge.domain.pedido;
 
+import com.fiap.challenge.domain.excecao.ExcecaoDeCampoObrigatorio;
 import com.fiap.challenge.domain.pedido.combo.Combo;
 import com.fiap.challenge.domain.usuario.Cliente;
 import jakarta.persistence.*;
@@ -28,10 +29,17 @@ public class Pedido {
     private Cliente cliente;
 
     public Pedido(List<Combo> combos, Cliente cliente) {
+        validarCamposObrigatorios(combos);
         this.total = combos.stream().map(Combo::getTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
         this.statusDoPedido = StatusDoPedido.AGUARDANDO_PAGAMENTO;
         this.combos = combos;
         this.cliente = cliente;
+    }
+
+    private ExcecaoDeCampoObrigatorio validarCamposObrigatorios(List<Combo> combos) {
+        return new ExcecaoDeCampoObrigatorio()
+                .quandoListaVazia(combos, "Pelo menos um combo deve ser informado")
+                .entaoDispara();
     }
 
     public Pedido() {

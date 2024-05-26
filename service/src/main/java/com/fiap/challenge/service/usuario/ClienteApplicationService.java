@@ -2,6 +2,7 @@ package com.fiap.challenge.service.usuario;
 
 import com.fiap.challenge.domain.usuario.Cliente;
 import com.fiap.challenge.domain.usuario.ClienteRepository;
+import com.fiap.challenge.domain.usuario.cpf.Cpf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +22,9 @@ public class ClienteApplicationService {
         return clienteRepository.findAll();
     }
 
-    public Cliente buscarCliente(Long clienteId) {
-        return clienteRepository.findById(clienteId)
+    public Cliente buscarCliente(String cpf) {
+        Cpf cpfParaConsulta = new Cpf(cpf);
+        return clienteRepository.findByCpf(cpfParaConsulta)
                 .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
     }
 

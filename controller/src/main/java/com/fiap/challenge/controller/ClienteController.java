@@ -1,8 +1,8 @@
 package com.fiap.challenge.controller;
 
+import com.fiap.challenge.domain.usuario.Cliente;
 import com.fiap.challenge.service.usuario.ClienteApplicationService;
 import com.fiap.challenge.service.usuario.ClienteDTO;
-import com.fiap.challenge.domain.usuario.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +22,11 @@ public class ClienteController {
     @GetMapping
     public ResponseEntity<List<Cliente>> buscarTodos() {
         return ResponseEntity.ok(clienteApplicationService.listarClientes());
+    }
+
+    @GetMapping("/{cpf}")
+    public ResponseEntity<Cliente> buscarPorCpf(@PathVariable String cpf) {
+        return ResponseEntity.ok(clienteApplicationService.buscarCliente(cpf));
     }
 
     @PostMapping

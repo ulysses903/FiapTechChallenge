@@ -29,4 +29,14 @@ class ClienteRepositoryTest {
         List<Cliente> clientes = clienteRepository.findAll();
         assertThat(clientes).containsExactly(cliente);
     }
+
+    @Test
+    void deve_buscar_cliente_por_cpf() {
+        Cliente cliente = ClienteBuilder.novo().comCpf("12345678909").criar();
+        clienteRepository.save(cliente);
+
+        Cliente clienteRetornado = clienteRepository.findByCpf(cliente.getCpf()).orElse(null);
+
+        assertThat(clienteRetornado).isEqualTo(cliente);
+    }
 }

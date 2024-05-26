@@ -1,8 +1,10 @@
 package com.fiap.challenge.domain.usuario;
 
+import com.fiap.challenge.domain.excecao.ExcecaoDeCampoObrigatorio;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class ClienteTest {
 
@@ -31,5 +33,26 @@ class ClienteTest {
         Cliente cliente = ClienteBuilder.novo().comCpf(cpf).criar();
 
         assertThat(cliente.getCpf().getValor()).isEqualTo(cpf);
+    }
+
+    @Test
+    void deve_lancar_uma_excecao_se_o_cpf_nao_for_iformado() {
+        Throwable throwable = catchThrowable(() -> ClienteBuilder.novo().comCpf("").criar());
+
+        assertThat(throwable).isInstanceOf(ExcecaoDeCampoObrigatorio.class).hasMessage("O CPF é obrigatório.");
+    }
+
+    @Test
+    void deve_lancar_uma_excecao_se_o_nome_nao_for_iformado() {
+        Throwable throwable = catchThrowable(() -> ClienteBuilder.novo().comNome("").criar());
+
+        assertThat(throwable).isInstanceOf(ExcecaoDeCampoObrigatorio.class).hasMessage("O nome é obrigatório.");
+    }
+
+    @Test
+    void deve_lancar_uma_excecao_se_o_email_nao_for_iformado() {
+        Throwable throwable = catchThrowable(() -> ClienteBuilder.novo().comEmail("").criar());
+
+        assertThat(throwable).isInstanceOf(ExcecaoDeCampoObrigatorio.class).hasMessage("O email é obrigatório.");
     }
 }
