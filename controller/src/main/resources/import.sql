@@ -1,6 +1,7 @@
-INSERT INTO cliente (nome, email) VALUES ('João2', 'joao@example.com');
-INSERT INTO cliente (nome, email) VALUES ('Maria', 'maria@example.com');
-INSERT INTO cliente (nome, email) VALUES ('Maria', 'maria@example.com');
+INSERT INTO cliente (nome, email, cpf) VALUES ('João2', 'joao@example.com', '19883297017');
+INSERT INTO cliente (nome, email, cpf) VALUES ('Maria', 'maria@example.com', '54668294047');
+INSERT INTO cliente (nome, email, cpf) VALUES ('Maria 1', 'maria1@example.com', '65320380089');
+
 INSERT INTO produto (nome, preco, tipo) VALUES ('X-Tudo', '15.85', 'LANCHE');
 INSERT INTO produto (nome, preco, tipo) VALUES ('Batata frita', '12.9', 'ACOMPANHAMENTO');
 INSERT INTO produto (nome, preco, tipo) VALUES ('Suco de laranja', '12.9', 'BEBIDA');
