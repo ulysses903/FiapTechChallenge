@@ -1,14 +1,35 @@
 services:
   mysql:
-    image: mysql
+    image: mysql:latest
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_example
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: ThePassword
     ports:
       - "3306:3306"
-    expose:
-      - "3306"
-    environment:
-      - MYSQL_USER=springuser
-      - MYSQL_PASSWORD=ThePassword
-      - MYSQL_DATABASE=db_example
-      - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - "./conf.d:/etc/mysql/conf.d:ro"
+      - mysql_data:/var/lib/mysql
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    restart: on-failure
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db_example
+      SPRING_DATASOURCE_USERNAME: springuser
+      SPRING_DATASOURCE_PASSWORD: ThePassword
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./controller/target:/app/controller-0.0.1-SNAPSHOT.jar:ro
+
+volumes:
+  mysql_data:
