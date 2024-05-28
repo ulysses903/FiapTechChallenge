@@ -47,10 +47,17 @@ public class PedidoApplicationService {
     @Transactional
     public PagamentoDTO incluirPedido(PedidoDTO pedidoDTO) throws MPException, MPApiException {
         List<Combo> combos = comboApplicationService.adicionarCombos(pedidoDTO.getCombos());
-        Cliente cliente = clienteRepository.findById(pedidoDTO.getCliente().getId()).orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
+        Cliente cliente = buscarCliente(pedidoDTO);
         Pedido pedido = new Pedido(combos, cliente);
         pedidoRepository.save(pedido);
         return pagamentoAPI.gerarPagamento(pedido);
+    }
+
+    private Cliente buscarCliente(PedidoDTO pedidoDTO) {
+        if (pedidoDTO.getCliente() != null && pedidoDTO.getCliente().getId() != null) {
+            return clienteRepository.findById(pedidoDTO.getCliente().getId()).orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
+        }
+        return null;
     }
 
     @Transactional
