@@ -24,6 +24,6 @@ public class SwaggerConfig {
                 .addServersItem(new Server().url("http://localhost:8080").description("Ambiente Local"))
                 .components(new io.swagger.v3.oas.models.Components())
                 .extensions(extensions);
-        }
-
     }
+
+}
