@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "categoria", discriminatorType = DiscriminatorType.STRING)
 public abstract class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

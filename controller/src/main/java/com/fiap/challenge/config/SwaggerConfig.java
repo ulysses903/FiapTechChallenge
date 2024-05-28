@@ -25,5 +25,4 @@ public class SwaggerConfig {
                 .components(new io.swagger.v3.oas.models.Components())
                 .extensions(extensions);
     }
-
 }

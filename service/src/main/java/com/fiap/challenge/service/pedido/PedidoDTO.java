@@ -15,8 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class PedidoDTO {
 
-    private BigDecimal total;
-    private StatusDoPedido status;
     private List<ComboDTO> combos;
     private ClienteDTO cliente;
 }

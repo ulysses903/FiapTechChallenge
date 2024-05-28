@@ -3,8 +3,10 @@ package com.fiap.challenge.repository.pagamento;
 import com.fiap.challenge.domain.pedido.Pedido;
 import com.fiap.challenge.domain.pedido.combo.Combo;
 import com.fiap.challenge.domain.pedido.combo.produto.Produto;
-import com.mercadopago.MercadoPagoConfig;
-import com.mercadopago.client.preference.*;
+import com.mercadopago.client.preference.PreferenceBackUrlsRequest;
+import com.mercadopago.client.preference.PreferenceClient;
+import com.mercadopago.client.preference.PreferenceItemRequest;
+import com.mercadopago.client.preference.PreferenceRequest;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.preference.Preference;
@@ -18,8 +20,6 @@ public class PagamentoAPIMercadoPago implements PagamentoAPI {
 
     @Override
     public PagamentoDTO gerarPagamento(Pedido pedido) throws MPException, MPApiException {
-        MercadoPagoConfig.setAccessToken("TEST-5613929221812140-052612-38aa6c2199555785e373be8fa3b38a7e-178052576");
-
         PreferenceClient client = new PreferenceClient();
 
         List<PreferenceItemRequest> items = montarListaDeItens(pedido.getCombos());
@@ -27,16 +27,16 @@ public class PagamentoAPIMercadoPago implements PagamentoAPI {
         PreferenceRequest preferenceRequest = PreferenceRequest.builder()
                 .backUrls(
                         PreferenceBackUrlsRequest.builder()
-                                .success("http://localhost:8080/pedido/" + pedido.getId() + "/confirmarPagamento")
-                                .failure("http://localhost:8080/pedido/" + pedido.getId() + "/cancelar")
-                                .pending("http://localhost:8080/pedido/" + pedido.getId() + "/cancelar")
+                                .success("http://localhost:8080/pedidos/" + pedido.getId() + "/confirmarPagamento")
+                                .failure("http://localhost:8080/pedidos/" + pedido.getId() + "/cancelar")
+                                .pending("http://localhost:8080/pedidos/" + pedido.getId() + "/cancelar")
                                 .build())
                 .items(items)
                 .expires(true)
                 .autoReturn("all")
                 .statementDescriptor("Lanchonete Tech Challenge")
                 .build();
-        
+
         Preference preference = client.create(preferenceRequest);
         return new PagamentoDTO(preference.getInitPoint(), preference.getId(), pedido.getId());
     }
