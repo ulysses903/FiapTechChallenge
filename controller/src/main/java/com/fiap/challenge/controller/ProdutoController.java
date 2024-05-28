@@ -49,7 +49,7 @@ public class ProdutoController {
     @PutMapping("lanches/{id}")
     public ResponseEntity<String> atualizarLanche(@PathVariable Long id, @RequestBody LancheDTO lancheDTO) {
         lancheApplicationService.atualizarLanche(id, lancheDTO);
-        return ResponseEntity.ok("Lanche atualizado para finalizado.");
+        return ResponseEntity.ok("Lanche atualizado com sucesso.");
     }
 
     @DeleteMapping("lanches/{id}")
@@ -77,7 +77,7 @@ public class ProdutoController {
     @PutMapping("acompanhamentos/{id}")
     public ResponseEntity<String> atualizarAcompanhamento(@PathVariable Long id, @RequestBody AcompanhamentoDTO acompanhamentoDTO) {
         acompanhamentoApplicationService.atualizarAcompanhamento(id, acompanhamentoDTO);
-        return ResponseEntity.ok("Acompanhamento atualizado para finalizado.");
+        return ResponseEntity.ok("Acompanhamento atualizado com sucesso.");
     }
 
     @DeleteMapping("acompanhamentos/{id}")
@@ -105,7 +105,7 @@ public class ProdutoController {
     @PutMapping("bebidas/{id}")
     public ResponseEntity<String> atualizarBebida(@PathVariable Long id, @RequestBody BebidaDTO bebidaDTO) {
         bebidaApplicationService.atualizarBebida(id, bebidaDTO);
-        return ResponseEntity.ok("Bebida atualizado para finalizado.");
+        return ResponseEntity.ok("Bebida atualizada com sucesso.");
     }
 
     @DeleteMapping("bebidas/{id}")
@@ -133,7 +133,7 @@ public class ProdutoController {
     @PutMapping("sobremesas/{id}")
     public ResponseEntity<String> atualizarSobremesa(@PathVariable Long id, @RequestBody SobremesaDTO sobremesaDTO) {
         sobremesaApplicationService.atualizarSobremesa(id, sobremesaDTO);
-        return ResponseEntity.ok("Sobremesa atualizado para finalizado.");
+        return ResponseEntity.ok("Sobremesa atualizado com sucesso.");
     }
 
     @DeleteMapping("sobremesas/{id}")
