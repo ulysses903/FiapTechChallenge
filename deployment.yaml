@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiaptechchallenge-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fiaptechchallenge
+  template:
+    metadata:
+      labels:
+        app: fiaptechchallenge
+    spec:
+      containers:
+        - name: fiaptechchallenge-container
+          image: ulysses903/fiaptechchallenge:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/minhaaplicacao
+            - name: SPRING_DATASOURCE_USERNAME
+              value: meuusuario
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: minhasenha
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fiaptechchallenge-service
+spec:
+  selector:
+    app: fiaptechchallenge
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

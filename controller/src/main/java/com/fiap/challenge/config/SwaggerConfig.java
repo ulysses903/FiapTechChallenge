@@ -21,7 +21,7 @@ public class SwaggerConfig {
                 .info(new Info().title("Serviço para controle de pedidos de uma lanchonete")
                         .description("Api Fase 1 - Tech Challenge")
                         .version("1.0.0"))
-                .addServersItem(new Server().url("http://localhost:8080").description("Ambiente Local"))
+                .addServersItem(new Server().url("http://localhost").description("Ambiente Local"))
                 .components(new io.swagger.v3.oas.models.Components())
                 .extensions(extensions);
     }
