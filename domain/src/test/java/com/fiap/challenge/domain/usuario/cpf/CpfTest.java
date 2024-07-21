@@ -1,7 +1,7 @@
 package com.fiap.challenge.domain.usuario.cpf;
 
-import com.fiap.challenge.domain.usuario.cpf.Cpf;
-import com.fiap.challenge.domain.usuario.cpf.CpfInvalido;
+import com.fiap.challenge.domain.entities.usuario.cpf.Cpf;
+import com.fiap.challenge.domain.entities.usuario.cpf.CpfInvalido;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

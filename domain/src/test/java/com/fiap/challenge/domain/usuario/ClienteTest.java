@@ -1,6 +1,8 @@
 package com.fiap.challenge.domain.usuario;
 
-import com.fiap.challenge.domain.excecao.ExcecaoDeCampoObrigatorio;
+import com.fiap.challenge.domain.entities.excecao.ExcecaoDeCampoObrigatorio;
+import com.fiap.challenge.domain.entities.usuario.Cliente;
+import com.fiap.challenge.domain.entities.usuario.ClienteBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

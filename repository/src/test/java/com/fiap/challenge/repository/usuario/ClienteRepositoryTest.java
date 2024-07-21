@@ -1,8 +1,8 @@
 package com.fiap.challenge.repository.usuario;
 
-import com.fiap.challenge.domain.usuario.Cliente;
-import com.fiap.challenge.domain.usuario.ClienteBuilder;
-import com.fiap.challenge.domain.usuario.ClienteRepository;
+import com.fiap.challenge.domain.entities.usuario.Cliente;
+import com.fiap.challenge.domain.entities.usuario.ClienteBuilder;
+import com.fiap.challenge.domain.entities.usuario.ClienteRepository;
 import com.fiap.challenge.repository.ConfiguracaoDeTesteParaCamadaDeRepositorio;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
