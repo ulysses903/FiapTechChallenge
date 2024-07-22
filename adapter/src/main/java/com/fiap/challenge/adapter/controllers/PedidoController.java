@@ -1,7 +1,7 @@
 package com.fiap.challenge.adapter.controllers;
 
 import com.fiap.challenge.core.entities.pedido.Pedido;
-import com.fiap.challenge.core.entities.pedido.PagamentoAPI;
+import com.fiap.challenge.core.gateway.pagamento.PagamentoAPI;
 import com.fiap.challenge.core.entities.pedido.PagamentoDTO;
 import com.fiap.challenge.core.usecases.pedido.PedidoApplicationService;
 import com.fiap.challenge.core.usecases.pedido.PedidoDTO;

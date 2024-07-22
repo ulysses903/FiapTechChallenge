@@ -1,6 +1,6 @@
-package com.fiap.challenge.adapter.repositories.pagamento;
+package com.fiap.challenge.adapter.gateway.pagamento;
 
-import com.fiap.challenge.core.entities.pedido.PagamentoAPI;
+import com.fiap.challenge.core.gateway.pagamento.PagamentoAPI;
 import com.fiap.challenge.core.entities.pedido.PagamentoDTO;
 import com.fiap.challenge.core.entities.pedido.Pedido;
 import com.fiap.challenge.core.entities.pedido.combo.Combo;

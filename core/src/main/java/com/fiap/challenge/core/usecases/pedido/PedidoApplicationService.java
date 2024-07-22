@@ -4,6 +4,7 @@ import com.fiap.challenge.core.entities.pedido.*;
 import com.fiap.challenge.core.entities.pedido.combo.Combo;
 import com.fiap.challenge.core.entities.usuario.Cliente;
 import com.fiap.challenge.core.entities.usuario.ClienteRepository;
+import com.fiap.challenge.core.gateway.pagamento.PagamentoAPI;
 import com.fiap.challenge.core.usecases.pedido.combo.ComboApplicationService;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
