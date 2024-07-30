@@ -2,7 +2,7 @@ FROM openjdk:21
 
 WORKDIR /app
 
-COPY ./controller/target/controller-0.0.1-SNAPSHOT.jar /app/api-fiap-tech-challenge.jar
+COPY ./application/target/application-0.0.1-SNAPSHOT.jar /app/api-fiap-tech-challenge.jar
 
 EXPOSE 8080
 
