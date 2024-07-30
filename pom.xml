@@ -15,10 +15,9 @@
     <name>tech-challenge</name>
     <description>Demo project for Spring Boot</description>
     <modules>
-        <module>domain</module>
-        <module>repository</module>
-        <module>service</module>
-        <module>controller</module>
+        <module>core</module>
+        <module>adapter</module>
+        <module>application</module>
     </modules>
     <properties>
         <java.version>21</java.version>
