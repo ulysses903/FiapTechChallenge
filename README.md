@@ -2,15 +2,6 @@
 Link do miro https://miro.com/app/board/uXjVKRWbQW0=/?share_link_id=57096918249
 Este projeto consiste em uma api REST para o fluxo de restaurante solicitado no tech challenge FIAP.
 
-## ✔️ Tecnologias e bibliotecas usadas
-- `Java 21`
-- `Spring Boot`
-- `Lombok`
-- `MySQL` 
-- `Docker`
-- `Kubernets`
--  `API MercadoPago` (https://www.mercadopago.com.br/developers/pt/reference/preferences/_checkout_preferences/post)
-
 # Descrição do problema
 Há uma lanchonete de bairro que está expandindo devido ao seu grande sucesso. Contudo, com a expansão e sem um sistema de controle de pedidos, o atendimento aos clientes pode se tornar caótico e confuso. Por exemplo, imagine que um cliente faça um pedido complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedido em um papel e entregá-lo à cozinha, mas não há garantia de que o pedido será preparado corretamente.
 
@@ -19,6 +10,15 @@ Sem um sistema de controle de pedidos, pode haver confusão entre os atendentes 
 Em resumo, um sistema de controle de pedidos é essencial para garantir que a lanchonete possa atender os clientes de maneira eficiente, gerenciando seus pedidos e estoques de forma adequada. Sem ele, expandir a lanchonete pode acabar não dando certo, resultando em clientes insatisfeitos e impactando os negócios de forma negativa.
 
 Para solucionar o problema, a lanchonete irá investir em um sistema de autoatendimento de fast food, que é composto por uma série de dispositivos e interfaces que permitem aos clientes selecionar e fazer pedidos sem precisar interagir com um atendente.
+
+## ✔️ Tecnologias e bibliotecas usadas
+- `Java 21`
+- `Spring Boot`
+- `Lombok`
+- `MySQL` 
+- `Docker`
+- `Kubernets`
+-  `API MercadoPago` (https://www.mercadopago.com.br/developers/pt/reference/preferences/_checkout_preferences/post)
 
 # Fluxos do projeto
 
